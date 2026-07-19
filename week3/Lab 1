@@ -1,0 +1,35 @@
+// Lab 1: Understanding ORM with a Retail Inventory System
+
+// 1. What is ORM?
+// ORM (Object-Relational Mapping) maps C# classes to database tables,
+// allowing developers to interact with the database using objects 
+// instead of writing raw SQL queries. It improves productivity, 
+// maintainability, and provides abstraction from SQL.
+
+// 2. EF Core vs EF Framework
+// EF Core: Cross-platform, lightweight, supports LINQ, async queries, 
+// and compiled queries.
+// EF Framework (EF6): Windows-only, more mature, but less flexible.
+
+// 3. EF Core 8.0 Features
+// - JSON column mapping
+// - Improved performance with compiled models
+// - Interceptors and better bulk operations
+
+// 4. Commands used to create the console app:
+// dotnet new console -n RetailInventory
+// cd RetailInventory
+
+// 5. Commands used to install EF Core packages:
+// dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+// dotnet add package Microsoft.EntityFrameworkCore.Design
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("RetailInventory project initialized successfully.");
+    }
+}

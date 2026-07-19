@@ -1,0 +1,44 @@
+// Lab 2: Setting Up the Database Context for a Retail Store
+
+// Scenario:
+// The retail store wants to store product and category data in SQL Server.
+
+// Objective:
+// Configure DbContext and connect to SQL Server.
+
+// 1. Create Models:
+
+public class Category
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public List<Product> Products { get; set; }
+}
+
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public int CategoryId { get; set; }
+    public Category Category { get; set; }
+}
+
+// 2. Create AppDbContext:
+
+using Microsoft.EntityFrameworkCore;
+
+public class AppDbContext : DbContext
+{
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Category> Categories { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("Your_Connection_String_Here");
+    }
+}
+
+// 3. Add Connection String in appsettings.json (optional for ASP.NET Core)
+// Example connection string:
+// "Server=localhost;Database=RetailDb;Trusted_Connection=True;TrustServerCertificate=True;"
