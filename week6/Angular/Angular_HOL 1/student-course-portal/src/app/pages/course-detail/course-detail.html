@@ -1,0 +1,13 @@
+<div>
+  <h2>Course Detail</h2>
+  <div *ngIf="course">
+    <h3>{{ course.name }}</h3>
+    <p>Code: {{ course.code }}</p>
+    <p>Credits: {{ course.credits }}</p>
+    <p>Status: {{ course.gradeStatus }}</p>
+  </div>
+  <div *ngIf="!course">
+    <p>Course not found!</p>
+  </div>
+  <a href="/">Back to Home</a>
+</div>

@@ -1,0 +1,15 @@
+<div appHighlight="lightblue" style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+  <h3>{{ course.name }}</h3>
+  <p>Code: {{ course.code }}</p>
+  <p>Credits: {{ course.credits | creditLabel }}</p>
+  <p>Status:
+    <span [ngSwitch]="course.gradeStatus">
+      <span *ngSwitchCase="'passed'" style="color: green">✅ Passed</span>
+      <span *ngSwitchCase="'failed'" style="color: red">❌ Failed</span>
+      <span *ngSwitchDefault style="color: gray">⏳ Pending</span>
+    </span>
+  </p>
+  <button (click)="enrollRequested.emit(course.id)">
+    {{ enrolled ? 'Unenroll' : 'Enroll' }}
+  </button>
+</div>

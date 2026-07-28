@@ -1,0 +1,23 @@
+<div>
+  <h1>{{ portalName }}</h1>
+  <p>Welcome to the Student Course Portal</p>
+  <br/>
+  <button [disabled]="!isPortalActive" (click)="onEnrollClick()">Enroll Now</button>
+  <p>{{ message }}</p>
+  <br/>
+  <input [(ngModel)]="searchTerm" placeholder="Search courses..." />
+  <p>Searching for: {{ searchTerm }}</p>
+  <hr/>
+  <p *ngIf="loading$ | async">Loading courses...</p>
+  <p *ngIf="error$ | async as error" style="color:red">{{ error }}</p>
+  <h2>Courses</h2>
+  <ng-container *ngIf="courses$ | async as courses">
+    <app-course-card
+      *ngFor="let c of courses"
+      [course]="c"
+      [enrolled]="isEnrolled(c.id)"
+      (enrollRequested)="onCourseEnroll($event)">
+    </app-course-card>
+  </ng-container>
+  <p *ngIf="selectedCourseId">Selected Course ID: {{ selectedCourseId }}</p>
+</div>
